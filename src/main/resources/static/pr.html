@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <title>PR – Gym-J</title>
+  <link rel="stylesheet" href="/css/Style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="/js/pr.js"></script>
+  <script defer src="/js/theme.js"></script>
+  <script defer src="/js/quotes.js"></script>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="logo">Gym-J</div>
+  <nav class="nav">
+    <a class="nav-button" href="/index.html">
+      <div class="nav-icon">🏠</div>
+      Startside
+    </a>
+    <a class="nav-button" href="/nutrition.html">
+      <div class="nav-icon">🍽️</div>
+      Nutrition
+    </a>
+    <a class="nav-button active" href="/pr.html">
+      <div class="nav-icon">🏋️</div>
+      PR
+    </a>
+    <a class="nav-button" href="#">
+      <div class="nav-icon">⚖️</div>
+      Vægt-tracking
+    </a>
+    <a class="nav-button" href="#">
+      <div class="nav-icon">📋</div>
+      Træningsplaner
+    </a>
+    <a class="nav-button" href="#">
+      <div class="nav-icon">📐</div>
+      BMI
+    </a>
+    <a class="nav-button" href="#" onclick="showNewQuote(); return false;">
+      <div class="nav-icon">💬</div>
+      Nyt citat
+    </a>
+  </nav>
+</aside>
+
+<main class="main">
+
+  <h1 class="hero-title">
+    Personlige <span class="hero-highlight">rekorder</span>
+  </h1>
+
+  <!-- PR-kort øverst: kvadratiske bokse -->
+  <div class="pr-cards">
+    <div class="pr-card">
+      <div class="pr-image pr-image-bench"></div>
+      <div class="pr-card-title">Bænkpres</div>
+      <div class="pr-card-value" id="benchValue">– kg</div>
+      <div class="pr-card-date" id="benchDate">Ingen PR endnu</div>
+    </div>
+    <div class="pr-card">
+      <div class="pr-image pr-image-squat"></div>
+      <div class="pr-card-title">Squat</div>
+      <div class="pr-card-value" id="squatValue">– kg</div>
+      <div class="pr-card-date" id="squatDate">Ingen PR endnu</div>
+    </div>
+    <div class="pr-card">
+      <div class="pr-image pr-image-deadlift"></div>
+      <div class="pr-card-title">Dødløft</div>
+      <div class="pr-card-value" id="deadliftValue">– kg</div>
+      <div class="pr-card-date" id="deadliftDate">Ingen PR endnu</div>
+    </div>
+  </div>
+
+  <form id="prForm">
+    <label>Øvelse</label>
+    <select id="exercise">
+      <option value="BENCH">Bænkpres</option>
+      <option value="SQUAT">Squat</option>
+      <option value="DEADLIFT">Dødløft</option>
+    </select>
+
+    <label>Vægt (kg)</label>
+    <input type="number" id="weight" required>
+
+    <label>Dato</label>
+    <input type="date" id="prDate" required>
+
+    <button type="submit">Gem PR</button>
+  </form>
+
+  <h2>Nuværende PR</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Øvelse</th>
+      <th>Vægt</th>
+      <th>Dato</th>
+      <th>Slet</th>
+    </tr>
+    </thead>
+    <tbody id="prTableBody"></tbody>
+  </table>
+
+  <canvas id="prChart"></canvas>
+
+</main>
+
+</body>
+</html>
