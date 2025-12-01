@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <title>Nutrition – Gym-J</title>
+  <link rel="stylesheet" href="/css/Style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="/js/nutrition.js"></script>
+  <script defer src="/js/theme.js"></script>
+  <script defer src="/js/quotes.js"></script>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="logo">Gym-J</div>
+  <nav class="nav">
+    <a class="nav-button" href="/index.html">
+      <div class="nav-icon">🏠</div>
+      Startside
+    </a>
+    <a class="nav-button active" href="/nutrition.html">
+      <div class="nav-icon">🍽️</div>
+      Nutrition
+    </a>
+    <a class="nav-button" href="/pr.html">
+      <div class="nav-icon">🏋️</div>
+      PR
+    </a>
+    <a class="nav-button" href="#">
+      <div class="nav-icon">⚖️</div>
+      Vægt-tracking
+    </a>
+    <a class="nav-button" href="#">
+      <div class="nav-icon">📋</div>
+      Træningsplaner
+    </a>
+    <a class="nav-button" href="#">
+      <div class="nav-icon">📐</div>
+      BMI
+    </a>
+    <a class="nav-button" href="#" onclick="showNewQuote(); return false;">
+      <div class="nav-icon">💬</div>
+      Nyt citat
+    </a>
+  </nav>
+</aside>
+
+<main class="main">
+
+  <h1>Nutrition</h1>
+
+  <form id="nutritionForm">
+    <label>Dato</label>
+    <input type="date" id="date" required>
+
+    <label>Kalorier</label>
+    <input type="number" id="calories" required>
+
+    <label>Fedt (g)</label>
+    <input type="number" id="fat" required>
+
+    <label>Protein (g)</label>
+    <input type="number" id="protein" required>
+
+    <button type="submit">Gem</button>
+  </form>
+
+  <h2>Registreringer</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Dato</th>
+      <th>Kalorier</th>
+      <th>Fedt</th>
+      <th>Protein</th>
+      <th>Slet</th>
+    </tr>
+    </thead>
+    <tbody id="nutritionTableBody"></tbody>
+  </table>
+
+  <canvas id="nutritionChart"></canvas>
+
+</main>
+
+</body>
+</html>
