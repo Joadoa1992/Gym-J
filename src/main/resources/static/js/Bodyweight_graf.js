@@ -1,27 +1,22 @@
-// bodyweight.js
 let weightChartInstance = null;
 
-// This function will be called by menuLoader when the page loads
-window.pageInit = function(file) {
-    if (file === "bodyweight_graf.html") {
-        initBodyweightPage();
-    }
-};
-
-// Format date
+// Helper function to format date as MM-DD
 function formatDate(date) {
     return `${date.getMonth() + 1}-${date.getDate()}`;
 }
 
-// Fetch bodyweights
+// Fetch bodyweights and filter by optional start/end dates
 async function fetchBodyweights(start = null, end = null) {
     try {
         const response = await fetch("http://localhost:8080/bodyweight/all");
         if (!response.ok) throw new Error("Failed to fetch bodyweights");
 
         let data = await response.json();
+
+        // Sort by date ascending
         data.sort((a, b) => new Date(a.date) - new Date(b.date));
 
+        // Filter by date range if provided
         if (start) start = new Date(start);
         if (end) end = new Date(end);
 
@@ -36,6 +31,7 @@ async function fetchBodyweights(start = null, end = null) {
         const weights = data.map(d => d.weight);
 
         createChart(labels, weights);
+
     } catch (error) {
         console.error("Error fetching bodyweights:", error);
     }
@@ -57,7 +53,7 @@ function createChart(labels, weights) {
                 datasets: [{
                     data: weights,
                     borderColor: "blue",
-                    backgroundColor: "rgba(0,0,255,0.1)",
+                    backgroundColor: "rgba(0, 0, 255, 0.1)",
                     fill: true,
                     tension: 0.2
                 }]
@@ -77,52 +73,42 @@ function createChart(labels, weights) {
     }
 }
 
-// Initialize page
-function initBodyweightPage() {
-    bindChartFormEvents();
-    loadDefaultRange();
-}
+// Submit new weight
+document.getElementById("weightForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
 
-// Bind events
-function bindChartFormEvents() {
-    const weightForm = document.getElementById("weightForm");
-    const updateRangeBtn = document.getElementById("updateRange");
+    const date = document.getElementById("date").value;
+    const weight = document.getElementById("weight").value;
 
-    if (weightForm) {
-        weightForm.addEventListener("submit", async function(event) {
-            event.preventDefault();
-            const date = document.getElementById("date").value;
-            const weight = document.getElementById("weight").value;
-            if (!date || !weight) return alert("Please fill out all fields.");
-
-            try {
-                const response = await fetch("http://localhost:8080/bodyweight", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ date, weight: parseFloat(weight) })
-                });
-                if (!response.ok) throw new Error("Failed to save bodyweight");
-
-                document.getElementById("date").value = "";
-                document.getElementById("weight").value = "";
-                loadDefaultRange();
-            } catch (err) {
-                alert("Error: " + err.message);
-            }
-        });
+    if (!date || !weight) {
+        alert("Please fill out all fields.");
+        return;
     }
 
-    if (updateRangeBtn) {
-        updateRangeBtn.addEventListener("click", () => {
-            const start = document.getElementById("startDate").value;
-            const end = document.getElementById("endDate").value;
-            if (!start || !end) return alert("Please select both start and end dates.");
-            fetchBodyweights(start, end);
-        });
-    }
-}
+    const data = { date, weight: parseFloat(weight) };
 
-// Default date range
+    try {
+        const response = await fetch("http://localhost:8080/bodyweight", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        if (!response.ok) throw new Error("Failed to save bodyweight");
+
+        // Clear form
+        document.getElementById("date").value = "";
+        document.getElementById("weight").value = "";
+
+        // Update chart with default range (5 days before and after today)
+        loadDefaultRange();
+
+    } catch (error) {
+        alert("Error: " + error.message);
+    }
+});
+
+// Load default range: 5 days before and after today
 function loadDefaultRange() {
     const today = new Date();
     const start = new Date();
@@ -130,8 +116,25 @@ function loadDefaultRange() {
     const end = new Date();
     end.setDate(today.getDate() + 5);
 
-    document.getElementById("startDate").value = start.toISOString().split("T")[0];
-    document.getElementById("endDate").value = end.toISOString().split("T")[0];
+    // Set date inputs
+    document.getElementById("startDate").value = start.toISOString().split('T')[0];
+    document.getElementById("endDate").value = end.toISOString().split('T')[0];
 
     fetchBodyweights(start, end);
 }
+
+// Update chart when user changes the range
+document.getElementById("updateRange").addEventListener("click", function() {
+    const start = document.getElementById("startDate").value;
+    const end = document.getElementById("endDate").value;
+
+    if (!start || !end) {
+        alert("Please select both start and end dates.");
+        return;
+    }
+
+    fetchBodyweights(start, end);
+});
+
+// Initial load
+loadDefaultRange();
