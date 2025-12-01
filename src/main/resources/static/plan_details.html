@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workout Plan</title>
+    <link rel="stylesheet" href="css/Style.css">
+</head>
+<body>
+
+<h1 id="planTitle"></h1>
+
+<h2>Exercises in Plan</h2>
+<div id="exerciseList"></div>
+
+<h2>Add Exercise to Plan</h2>
+<form id="exerciseForm">
+    <input type="text" id="exerciseName" placeholder="Exercise Name" required>
+    <input type="text" id="description" placeholder="Description">
+    <input type="number" id="weight" placeholder="Weight" required>
+    <input type="number" id="sets" placeholder="Sets" required>
+    <input type="number" id="reps" placeholder="Reps" required>
+    <input type="text" id="imageUrl" placeholder="Image URL">
+
+    <button type="submit">Add Exercise</button>
+</form>
+
+<h2>Log Workout</h2>
+<form id="logForm">
+    <label>Select Exercise:</label>
+    <select id="exerciseSelectLog"></select>
+
+    <input type="number" id="logWeight" placeholder="Weight used" required>
+    <input type="number" id="logSets" placeholder="Sets completed" required>
+    <input type="number" id="logReps" placeholder="Reps completed" required>
+
+    <button type="submit">Save Log</button>
+</form>
+
+<h2>Previous Logs</h2>
+<div id="logList"></div>
+
+<script src="js/workout.js"></script>
+</body>
+</html>
