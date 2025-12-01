@@ -1,0 +1,96 @@
+/* Body */
+body {
+    margin: 0;
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+    background-color: #e1dfdf;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+}
+
+/* Sidebar header (Menu) */
+.sidebar-header {
+    background-color: #212121; /* dark banner */
+    padding: 20px 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sidebar-header h2 {
+    color: #37777A; /* teal */
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Sidebar menu items */
+.sidebar-menu {
+    background-color: #E9E9E9; /* same as login box */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-menu a {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #37777A;
+    font-size: 16px;
+    border-bottom: 1px solid #d0d0d0;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-menu a:hover {
+    background-color: #2b5e63; /* hover */
+    color: #E9E9E9;
+}
+
+/* Sidebar user area (logout + username) */
+.sidebar-user {
+    background-color: #E9E9E9; /* same as menu so no footer box */
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #d0d0d0;
+}
+
+#logged-in-user {
+    display: block;
+    margin-bottom: 10px;
+    color: #37777A;
+    font-size: 16px;
+}
+
+/* Logout Button */
+.logout-btn {
+    background-color: #37777A; /* Gym-J green */
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #2b5e63; /* darker teal hover */
+}
+
+/* Main content area */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #E9E9E9;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    min-height: 400px;
+}

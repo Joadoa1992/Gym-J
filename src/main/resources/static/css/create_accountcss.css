@@ -1,0 +1,99 @@
+/* Page background */
+body {
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+    background-color: #E6E6E6; /* page background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Card container */
+.login-container {
+    background-color: #E9E9E9; /* card background */
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+/* Header section */
+.login-header {
+    background-color: #212121;
+    padding: 20px;
+    text-align: center;
+}
+
+.login-header h2 {
+    margin: 0;
+    color: #37777A; /* teal header text */
+    font-size: 26px;
+    font-weight: bold;
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+}
+
+/* Form container inside the card */
+.login-form {
+    padding: 30px 20px;
+}
+
+/* Input group styling */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #212121; /* dark label text */
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #37777A; /* teal border */
+    background-color: #E9E9E9; /* input background */
+    color: #212121; /* input text color */
+    box-sizing: border-box;
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+}
+
+.input-group input::placeholder {
+    color: #212121; /* placeholder text */
+}
+
+/* Submit button */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #37777A; /* teal button */
+    border: none;
+    border-radius: 5px;
+    color: #E9E9E9;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+}
+
+button:hover {
+    background-color: #2b5e63; /* darker teal on hover */
+}
+
+/* Optional: clickable text link for Back to Login */
+.link-text {
+    color: #37777A;
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+}
+
+.link-text:hover {
+    color: #2b5e63;
+}

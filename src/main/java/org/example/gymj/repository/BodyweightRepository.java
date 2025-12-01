@@ -2,7 +2,8 @@ package org.example.gymj.repository;
 
 import org.example.gymj.model.Bodyweight;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 
-public interface BodyweightRepository extends JpaRepository<Bodyweight, Long> {
+public interface BodyweightRepository extends JpaRepository<Bodyweight, Integer> {
+    List<Bodyweight> findByUserId(Integer userId);
 }

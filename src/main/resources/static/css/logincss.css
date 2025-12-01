@@ -1,0 +1,93 @@
+body {
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif; /* sporty condensed font */
+    background-color: #e1dfdf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: #E9E9E9;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.login-header {
+    background-color: #212121;
+    padding: 20px;
+    text-align: center;
+}
+
+.login-header h2 {
+    margin: 0;
+    color: #37777A;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+}
+
+.login-form {
+    padding: 30px 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #212121;
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #37777A;
+    background-color: #E9E9E9;
+    color: #212121;
+    box-sizing: border-box;
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+}
+
+.input-group input::placeholder {
+    color: #212121;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #37777A;
+    border: none;
+    border-radius: 5px;
+    color: #E9E9E9;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+}
+
+button:hover {
+    background-color: #2b5e63;
+}
+
+.link-text {
+    color: #37777A; /* teal text */
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: "Gill Sans MT Condensed", "Gill Sans", "Trebuchet MS", sans-serif;
+}
+
+.link-text:hover {
+    color: #2b5e63; /* darker teal on hover */
+}
+
