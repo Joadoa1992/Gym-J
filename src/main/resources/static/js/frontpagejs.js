@@ -92,6 +92,7 @@ window.addEventListener("DOMContentLoaded", () => {
 // ===================================================================
 // MENU CONTENT LOADER
 // ===================================================================
+// menuLoader.js
 const contentArea = document.getElementById("content-area");
 const menuLinks = document.querySelectorAll(".sidebar-menu a");
 
@@ -108,11 +109,17 @@ if (menuLinks) {
                 .then(html => {
                     contentArea.innerHTML = html;
                     contentArea.style.display = "block";
+
+                    // If the loaded page has a JS initializer, run it
+                    if (window.pageInit && typeof window.pageInit === "function") {
+                        window.pageInit(file);
+                    }
                 })
                 .catch(err => console.error("Load Error:", err));
         });
     });
 }
+
 
 // ===================================================================
 // HOME BUTTON — hides loaded content
