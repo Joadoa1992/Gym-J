@@ -1,5 +1,6 @@
 package org.example.gymj.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -16,8 +17,17 @@ public class User {
     private String lastName;
     private String email;
 
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Bodyweight> bodyweight;
+
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Bodyweight> bodyweights;
+
+    public User() {
+    }
+
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -37,7 +47,17 @@ public class User {
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
+
     public List<Bodyweight> getBodyweight() { return bodyweight; }
     public void setBodyweight(List<Bodyweight> bodyweight) { this.bodyweight = bodyweight; }
+
+    public List<Bodyweight> getBodyweights() {
+        return bodyweights;
+    }
+
+    public void setBodyweights(List<Bodyweight> bodyweights) {
+        this.bodyweights = bodyweights;
+    }
+
 }
 
