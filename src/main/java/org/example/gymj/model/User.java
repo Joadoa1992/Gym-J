@@ -1,5 +1,6 @@
 package org.example.gymj.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,9 +14,12 @@ public class User {
     private String username;
     private String password;
 
-    @OneToMany
-    @JoinColumn(name ="bodyweight_id")
-    private List<Bodyweight> bodyweight;
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Bodyweight> bodyweights;
+
+    public User() {
+    }
 
     public int getId() {
         return id;
@@ -41,11 +45,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Bodyweight> getBodyweight() {
-        return bodyweight;
+    public List<Bodyweight> getBodyweights() {
+        return bodyweights;
     }
 
-    public void setBodyweight(List<Bodyweight> bodyweight) {
-        this.bodyweight = bodyweight;
+    public void setBodyweights(List<Bodyweight> bodyweights) {
+        this.bodyweights = bodyweights;
     }
 }
