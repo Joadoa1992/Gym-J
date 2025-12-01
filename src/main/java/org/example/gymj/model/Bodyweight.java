@@ -1,8 +1,10 @@
 package org.example.gymj.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Bodyweight {
@@ -14,8 +16,20 @@ public class Bodyweight {
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name ="user_id")
+    @JsonBackReference
     private User user;
+
+
+    public Bodyweight(double weight, LocalDate date, User user) {
+        this.weight = weight;
+        this.date = date;
+        this.user = user;
+    }
+
+    public Bodyweight() {
+
+    }
 
     public int getId() {
         return id;

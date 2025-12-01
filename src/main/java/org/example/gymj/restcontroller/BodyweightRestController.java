@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/bodyweights")
+@RequestMapping("/bodyweight")
 public class BodyweightRestController {
 
     @Autowired
@@ -19,43 +19,24 @@ public class BodyweightRestController {
     @Autowired
     private UserRepository userRepository;
 
-    // Create new bodyweight entry
-    @PostMapping("/{userId}")
-    public Bodyweight addWeight(@PathVariable Integer userId, @RequestBody Bodyweight bodyweight) {
-        User user = userRepository.findById(userId)
+    @PostMapping
+    public Bodyweight create(@RequestBody Bodyweight request) {
+
+        User user = userRepository.findById(1)      // her skal det ændres, hvis man skal finde den rigtige bruger
                 .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Bodyweight bodyweight = new Bodyweight();
         bodyweight.setUser(user);
+        bodyweight.setDate(request.getDate());
+        bodyweight.setWeight(request.getWeight());
+
         return bodyweightRepository.save(bodyweight);
     }
 
-    // Get all bodyweight entries for a user
-    @GetMapping("/{userId}")
-    public List<Bodyweight> getUserWeights(@PathVariable Integer userId) {
-        return bodyweightRepository.findByUserId(userId);
-    }
 
-    // Update a bodyweight entry
-    @PutMapping("/{id}")
-    public Bodyweight updateWeight(@PathVariable Integer id, @RequestBody Bodyweight updatedWeight) {
-        Bodyweight bw = bodyweightRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Bodyweight entry not found"));
-        bw.setWeight(updatedWeight.getWeight());
-        bw.setDate(updatedWeight.getDate());
-        return bodyweightRepository.save(bw);
-    }
-
-    // Delete a bodyweight entry
-    @DeleteMapping("/{id}")
-    public String deleteWeight(@PathVariable Integer id) {
-        Bodyweight bw = bodyweightRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Bodyweight entry not found"));
-        bodyweightRepository.delete(bw);
-        return "Deleted bodyweight entry with id: " + id;
-    }
-
-    // Get all bodyweight entries
-    @GetMapping
-    public List<Bodyweight> getAllWeights() {
+    // Her skal der ændres hvis det skal være en særlige bruger
+    @GetMapping("/all")
+    public List<Bodyweight> getAll() {
         return bodyweightRepository.findAll();
     }
 }
