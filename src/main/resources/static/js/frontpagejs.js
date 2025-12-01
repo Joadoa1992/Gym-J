@@ -82,7 +82,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 if (!user || !user.username) {
                     window.location.href = "/login.html";
                 } else {
-                    userText.textContent = "Logged in as: " + user.username;
+                    userText.textContent = "Velkommen tilbage" + user.username;
                 }
             })
             .catch(err => console.error("Session Error:", err));
