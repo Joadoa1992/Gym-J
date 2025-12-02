@@ -51,22 +51,34 @@ function createChart(labels, weights) {
             data: {
                 labels: labels,
                 datasets: [{
+                    label: "Vægt",
                     data: weights,
                     borderColor: "blue",
-                    backgroundColor: "rgba(0, 0, 255, 0.1)",
-                    fill: true,
-                    tension: 0.2
+                    borderWidth: 3,
+                    tension: 0.3,
+                    pointRadius: 3,
+                    fill: false
                 }]
             },
             options: {
                 responsive: true,
                 plugins: {
                     legend: { display: false },
-                    tooltip: { enabled: false }
+                    tooltip: {
+                        enabled: true,
+                        titleColor: "white",
+                        bodyColor: "white"
+                    }
                 },
                 scales: {
-                    x: { title: { display: true, text: "Date" } },
-                    y: { title: { display: true, text: "Kg" } }
+                    x: {
+                        ticks: { color: "#ffffff" },
+                        title: { display: true, text: "Dato", color: "#ffffff" }
+                    },
+                    y: {
+                        ticks: { color: "#ffffff" },
+                        title: { display: true, text: "Kg", color: "#ffffff" }
+                    }
                 }
             }
         });
