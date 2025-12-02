@@ -10,5 +10,6 @@ import java.util.Optional;
 
 public interface BodyweightRepository extends JpaRepository<Bodyweight, Integer> {
 
+    boolean existsByDateAndUser(LocalDate date, User user);
 }
 

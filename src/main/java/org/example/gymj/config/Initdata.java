@@ -24,10 +24,14 @@ public class Initdata implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        User user = new User();
-        user.setUsername("John");
-        user.setPassword("john");
-        userRepository.save(user);
+        User user = userRepository.findByUsername("John");
+
+        if (user == null) {
+            user = new User();
+            user.setUsername("John");
+            user.setPassword("john");
+            user = userRepository.save(user);
+        }
 
         List<Bodyweight> entries = List.of(
                 new Bodyweight(90.5, LocalDate.now().plusDays(1), user),
@@ -42,7 +46,11 @@ public class Initdata implements CommandLineRunner {
                 new Bodyweight(80.0, LocalDate.now().plusDays(20), user)
         );
 
-        bodyweightRepository.saveAll(entries);
+        for (Bodyweight entry : entries) {
+            if (!bodyweightRepository.existsByDateAndUser(entry.getDate(), user)) {
+                bodyweightRepository.save(entry);
+            }
+        }
     }
 
 }
