@@ -55,3 +55,14 @@ canvas {
     margin-top: 10px;
     margin-bottom: 18px;
 }
+
+.hero-title {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    margin-bottom: 20px;
+}
+
+.hero-highlight {
+    color: #4fc3f7;
+}

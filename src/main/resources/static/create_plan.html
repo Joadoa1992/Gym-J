@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Workout Plan</title>
-    <link rel="stylesheet" href="css/frontpagecss.css">
     <link rel="stylesheet" href="css/workout.css">
+    <link rel="stylesheet" href="css/frontpagecss.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="/js/pr.js"></script>
+    <script defer src="/js/theme.js"></script>
+    <script defer src="/js/quotes.js"></script>
 </head>
 <body>
+
+<div class="sidebar">
+    <div class="sidebar-header" id="home-button">
+        <a href="frontpage.html" class="no-link-style"> <h2>Gym-J</h2></a>
+    </div>
+
+    <div class="sidebar-menu">
+        <a href="#" data-file="pr.html"><div class="nav-icon">🏋️</div>
+            PR</a>
+        <a href="#" data-file="nutrition.html"><div class="nav-icon">🍽️</div>
+            Nutrition</a>
+        <a href="#" data-file="bodyweight_graf.html"><div class="nav-icon">⚖️</div>
+            Weight tracker</a>
+        <a href="#" data-file="workout_menu.html"><div class="nav-icon">📋</div>
+            Træningsplaner</a>
+        <a href="#" data-file="test5.html"><div class="nav-icon">📐</div>
+            BMI</a>
+        <a href="#" data-file="test6.html">Test 6</a>
+        <a class="nav-button" href="#" onclick="showNewQuote(); return false;">
+            <div class="nav-icon">💬</div>
+            Nyt citat
+        </a>
+    </div>
+
+    <div class="sidebar-user">
+        <span id="logged-in-user">Loading...</span>
+        <button id="logout-button" class="logout-btn">Logout</button>
+    </div>
+</div>
+<div class="content" id="content-area">
 
 <!-- MAIN CONTENT -->
 <div class="main">
@@ -44,7 +78,7 @@
     </form>
 
 </div>
-
+</div>
 <script src="js/workout.js"></script>
 </body>
 </html>

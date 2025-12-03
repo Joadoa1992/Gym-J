@@ -314,3 +314,11 @@ canvas {
     transform: translateY(-2px);
     background: linear-gradient(135deg, #6fd8ff, #9be7ff);
 }
+
+.no-link-style {
+    text-decoration: none; /* removes underline */
+    color: inherit;        /* uses the h2's color instead of default link color */
+}
+.no-link-style:hover {
+    color: inherit;        /* optional: prevent hover color change */
+}
