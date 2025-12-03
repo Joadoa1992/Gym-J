@@ -57,7 +57,7 @@ public class WorkoutPlan {
 
     public void addExercise(WorkoutExercise exercise) {
         this.exercises.add(exercise);
-        exercise.getPlans().add(this);
+       // exercise.getPlans().add(this);
     }
 
     public void removeExercise(WorkoutExercise exercise) {

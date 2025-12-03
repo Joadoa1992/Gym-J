@@ -24,19 +24,21 @@ public class WorkoutLogController {
         this.exerciseRepo = exerciseRepo;
     }
 
-    @PostMapping("/{exerciseId}")
-    public WorkoutLog createLog(@PathVariable int exerciseId,
-                                @RequestBody WorkoutLog log) {
-
+    @PostMapping("/{exerciseId}/batch")
+    public List<WorkoutLog> createLogs(@PathVariable int exerciseId,
+                                       @RequestBody List<WorkoutLog> logs) {
         WorkoutExercise exercise = exerciseRepo.findById(exerciseId)
                 .orElseThrow(() -> new RuntimeException("Exercise not found"));
 
-        log.setExercise(exercise);
-        log.setTotalVolume(log.getWeight() * log.getSetsCompleted() * log.getRepsCompleted());
-        log.setDate(LocalDate.now());
+        for (WorkoutLog log : logs) {
+            log.setExercise(exercise);
+            log.setTotalVolume(log.getWeight() * log.getSetsCompleted() * log.getRepsCompleted());
+            log.setDate(LocalDate.now());
+        }
 
-        return logRepo.save(log);
+        return logRepo.saveAll(logs);
     }
+
 
     @GetMapping("/{exerciseId}")
     public List<WorkoutLog> getLogs(@PathVariable int exerciseId) {

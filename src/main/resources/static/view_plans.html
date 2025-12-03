@@ -3,12 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Your Workout Plans</title>
-    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/workout.css">
 </head>
 <body>
 
-<h1>Your Workout Plans</h1>
-<div id="plansList"></div>
+<aside class="sidebar">
+    <div class="logo">Gym-J</div>
+    <nav class="nav">
+        <a class="nav-button active" href="/index.html">
+            <div class="nav-icon">🏠</div>
+            Startside
+        </a>
+        <a class="nav-button" href="/nutrition.html">
+            <div class="nav-icon">🍽️</div>
+            Nutrition
+        </a>
+        <a class="nav-button" href="/pr.html">
+            <div class="nav-icon">🏋️</div>
+            PR
+        </a>
+        <a class="nav-button" href="#">
+            <div class="nav-icon">⚖️</div>
+            Vægt-tracking
+        </a>
+        <a class="nav-button" href="/workout_menu.html">
+            <div class="nav-icon">📋</div>
+            Træningsplaner
+        </a>
+        <a class="nav-button" href="#">
+            <div class="nav-icon">📐</div>
+            BMI
+        </a>
+        <!-- 7. knap: skift citat -->
+        <a class="nav-button" href="#" onclick="showNewQuote(); return false;">
+            <div class="nav-icon">💬</div>
+            Nyt citat
+        </a>
+    </nav>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+    <h1 class="hero-title">
+        Your <span class="hero-highlight">Workout Plans</span>
+    </h1>
+
+    <div id="plansList" style="margin-top: 20px;"></div>
+</div>
 
 <script src="js/workout.js"></script>
 </body>

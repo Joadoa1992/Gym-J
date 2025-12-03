@@ -3,14 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Workout Menu</title>
-    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/workout.css">
 </head>
 <body>
 
-<h1> Workout Planner</h1>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <div class="logo">Gym-J</div>
 
-<a href="create_plan.html">Create a new workout plan</a>
-<a href="view_plans.html">Your workout plans</a>
+    <nav class="nav">
+        <a class="nav-button active" href="/index.html">
+            <div class="nav-icon">🏠</div>
+            Startside
+        </a>
+        <a class="nav-button" href="/nutrition.html">
+            <div class="nav-icon">🍽️</div>
+            Nutrition
+        </a>
+        <a class="nav-button" href="/pr.html">
+            <div class="nav-icon">🏋️</div>
+            PR
+        </a>
+        <a class="nav-button" href="#">
+            <div class="nav-icon">⚖️</div>
+            Vægt-tracking
+        </a>
+        <a class="nav-button" href="/workout_menu.html">
+            <div class="nav-icon">📋</div>
+            Træningsplaner
+        </a>
+        <a class="nav-button" href="#">
+            <div class="nav-icon">📐</div>
+            BMI
+        </a>
+        <a class="nav-button" href="#" onclick="showNewQuote(); return false;">
+            <div class="nav-icon">💬</div>
+            Nyt citat
+        </a>
+    </nav>
+</aside>
+
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+    <h1 class="hero-title">
+        Workout <span class="hero-highlight">Planner</span>
+    </h1>
+
+    <div class="center-menu">
+        <a href="create_plan.html" class="center-btn">Create a New Workout Plan</a>
+        <a href="view_plans.html" class="center-btn">Your Workout Plans</a>
+    </div>
+
+</div>
 
 <script src="js/workout.js"></script>
 </body>

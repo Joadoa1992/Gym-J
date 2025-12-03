@@ -3,39 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Workout Plan</title>
-    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/workout.css">
 </head>
 <body>
 
-<h2>Create a Workout Plan</h2>
+<aside class="sidebar">
+    <div class="logo">Gym-J</div>
+    <nav class="nav">
+        <a class="nav-button active" href="/index.html">
+            <div class="nav-icon">🏠</div>
+            Startside
+        </a>
+        <a class="nav-button" href="/nutrition.html">
+            <div class="nav-icon">🍽️</div>
+            Nutrition
+        </a>
+        <a class="nav-button" href="/pr.html">
+            <div class="nav-icon">🏋️</div>
+            PR
+        </a>
+        <a class="nav-button" href="#">
+            <div class="nav-icon">⚖️</div>
+            Vægt-tracking
+        </a>
+        <a class="nav-button" href="/workout_menu.html">
+            <div class="nav-icon">📋</div>
+            Træningsplaner
+        </a>
+        <a class="nav-button" href="#">
+            <div class="nav-icon">📐</div>
+            BMI
+        </a>
+        <!-- 7. knap: skift citat -->
+        <a class="nav-button" href="#" onclick="showNewQuote(); return false;">
+            <div class="nav-icon">💬</div>
+            Nyt citat
+        </a>
+    </nav>
+</aside>
 
-<label>Plan Name:</label>
-<input type="text" id="planName">
+<!-- MAIN CONTENT -->
+<div class="main">
 
-<br><br>
+    <h1 class="hero-title">
+        Create <span class="hero-highlight">Workout Plan</span>
+    </h1>
 
-<label>Filter by Muscle Group:</label>
-<select id="muscleGroupSelect">
-    <option value="ALL">-- All --</option>
-    <option value="CHEST">Chest</option>
-    <option value="BACK">Back</option>
-    <option value="SHOULDERS">Shoulders</option>
-    <option value="LEGS">Legs</option>
-    <option value="ARMS">Arms</option>
-    <option value="CORE">Core</option>
-</select>
+    <form id="createPlanForm">
 
-<br><br>
+        <label>Plan Name:</label>
+        <input type="text" id="planName" placeholder="e.g. Push Day">
 
-<div id="exercise_list" style="border:1px solid #ccc; padding:10px; max-height:300px; overflow-y:auto;">
-    <!-- Exercises will appear here -->
+        <label>Filter by Muscle Group:</label>
+        <select id="muscleGroupSelect">
+            <option value="ALL">-- All --</option>
+            <option value="CHEST">Chest</option>
+            <option value="BACK">Back</option>
+            <option value="SHOULDERS">Shoulders</option>
+            <option value="LEGS">Legs</option>
+            <option value="ARMS">Arms</option>
+            <option value="CORE">Core</option>
+        </select>
+
+        <div id="exercise_list"
+             style="border:1px solid rgba(255,255,255,0.08);
+                    padding:14px;
+                    border-radius:12px;
+                    background:rgba(5,7,10,0.9);
+                    margin-top:12px;">
+            <!-- Exercises dynamically added here -->
+        </div>
+
+        <button type="submit">Create Plan</button>
+    </form>
+
 </div>
-
-<br>
-
-<form id="createPlanForm">
-    <button type="submit">Create Plan</button>
-</form>
 
 <script src="js/workout.js"></script>
 </body>
