@@ -12,6 +12,12 @@ body {
     display: flex;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);    /* Makes icon white */
+    opacity: 0.8;
+    cursor: pointer;
+}
+
 /* Sidebar */
 .sidebar {
     width: 230px;

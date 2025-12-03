@@ -1,98 +1,4 @@
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-
-body {
-    background: #05070a;
-    color: #f5f5f5;
-    min-height: 100vh;
-    display: flex;
-}
-
-
-.sidebar {
-    width: 230px;
-    background: #05070a;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 24px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    color: #e0f7ff;
-}
-
-.nav {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-
-.nav-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 10px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid transparent;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.18s ease-out;
-    font-size: 13px;
-    height: 80px;
-}
-
-.nav-button:hover {
-    background: rgba(79, 195, 247, 0.12);
-    border-color: rgba(79, 195, 247, 0.7);
-    transform: translateX(3px);
-}
-
-.nav-button.active {
-    background: linear-gradient(135deg, #4fc3f7, #81d4fa);
-    color: #05070a;
-    font-weight: 600;
-}
-
-.nav-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.06);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-}
-
-
-.main {
-    flex: 1;
-    padding: 40px 48px;
-    background:
-            radial-gradient(circle at top left, rgba(79, 195, 247, 0.18), transparent 55%),
-            radial-gradient(circle at bottom right, rgba(129, 212, 250, 0.12), transparent 50%),
-            #05070a;
-}
-
-
+/* PAGE TITLES */
 .hero-title {
     font-size: 42px;
     font-weight: 800;
@@ -105,7 +11,7 @@ body {
     color: #4fc3f7;
 }
 
-
+/* QUOTE */
 .quote-wrapper {
     max-width: 680px;
 }
@@ -122,15 +28,14 @@ body {
     opacity: 0.8;
 }
 
-
+/* FORM */
 form {
-    width: 100%; /* allow full width */
+    width: 100%;
     margin-top: 24px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-
 
 label {
     font-size: 13px;
@@ -148,6 +53,7 @@ select {
     color: #f5f5f5;
 }
 
+/* BUTTONS */
 button {
     padding: 10px 16px;
     border-radius: 999px;
@@ -157,10 +63,15 @@ button {
     font-weight: 600;
     cursor: pointer;
     margin-top: 10px;
-    align-self: flex-start;
 }
 
-/* DELETE-KNAP */
+.style_button{
+    margin-top: 12px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+/* DELETE BUTTON */
 button.delete-btn {
     background: rgba(244, 67, 54, 0.9);
     color: #fff;
@@ -170,7 +81,7 @@ button.delete-btn {
     margin-top: 0;
 }
 
-/* TABEL */
+/* TABLE */
 table {
     width: 100%;
     margin-top: 16px;
@@ -196,13 +107,13 @@ tr:nth-child(odd) td {
     background: rgba(255, 255, 255, 0.02);
 }
 
-
+/* CANVAS */
 canvas {
     margin-top: 32px;
     max-width: 100%;
 }
 
-
+/* PR CARDS */
 .pr-cards {
     display: flex;
     gap: 16px;
@@ -220,7 +131,6 @@ canvas {
     flex-direction: column;
     gap: 6px;
 }
-
 
 .pr-image {
     width: 100%;
@@ -249,8 +159,6 @@ canvas {
     background-position: center;
 }
 
-
-
 .pr-card-title {
     font-size: 13px;
     opacity: 0.8;
@@ -267,42 +175,27 @@ canvas {
     opacity: 0.7;
 }
 
-/* RESPONSIVE (mobil) */
+/* RESPONSIVE */
 @media (max-width: 800px) {
-    body {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        flex-direction: row;
-        align-items: center;
-        overflow-x: auto;
-    }
-
     .nav {
         flex-direction: row;
         flex-wrap: nowrap;
-    }
-
-    .main {
-        padding: 24px 16px;
     }
 
     .pr-cards {
         flex-direction: column;
     }
 }
-/* Container for exercises */
+
+/* EXERCISE LIST */
 #exercise_list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* smaller min width for more items */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 20px;
     width: 100%;
     margin-top: 12px;
 }
 
-/* Each exercise card */
 .exerciseItem {
     cursor: pointer;
     display: flex;
@@ -313,29 +206,26 @@ canvas {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255,255,255,0.08);
     transition: transform 0.2s, box-shadow 0.2s;
-    height: auto; /* let it grow with content */
 }
 
 .exerciseItem:hover {
     background: rgba(79,195,247,0.08);
-    transform: translateY(-1px); /* smaller movement */
+    transform: translateY(-1px);
 }
 
 .exerciseItem img {
-    width: 100%;        /* fills the card width */
-    height: 150px;      /* fixed height for all images */
-    object-fit: cover;  /* fills container while keeping aspect ratio */
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
     border-radius: 8px;
     margin-bottom: 8px;
-    background: #05070a; /* fallback background for transparent images */
+    background: #05070a;
 }
-
-
 
 .exerciseItem.selected {
     border-color: #4fc3f7;
     box-shadow: 0 0 12px rgba(79, 195, 247, 0.5);
-    transform: scale(1.03); /* smaller scale */
+    transform: scale(1.03);
 }
 
 .exerciseItem .info {
@@ -354,43 +244,20 @@ canvas {
     opacity: 0.7;
 }
 
-/* Responsive: 3 per row on tablet */
+/* RESPONSIVE GRID */
 @media (max-width: 1200px) {
     #exercise_list {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Responsive: 2 per row on mobile */
 @media (max-width: 800px) {
     #exercise_list {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-.exerciseClickArea {
-    border: 2px solid transparent;
-    padding: 10px;
-    width: 140px;
-    cursor: pointer;
-    text-align: center;
-    border-radius: 10px;
-    transition: 0.2s;
-}
-
-.exerciseClickArea img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.exerciseClickArea.selected {
-    border-color: #4CAF50; /* Green highlight */
-    background-color: rgba(76, 175, 80, 0.2);
-}
-
-
+/* PLAN CARDS */
 .planCard {
     background: rgba(5, 7, 10, 0.92);
     border: 1px solid rgba(255,255,255,0.08);
@@ -417,6 +284,8 @@ canvas {
     font-weight: 600;
     cursor: pointer;
 }
+
+/* CENTER MENU */
 .center-menu {
     display: flex;
     justify-content: center;
@@ -424,7 +293,6 @@ canvas {
     gap: 40px;
     margin-top: 60px;
 }
-
 
 .center-btn {
     display: flex;
@@ -437,11 +305,10 @@ canvas {
     font-weight: 700;
     text-decoration: none;
     font-size: 16px;
-    width: 240px;           /* SAME SIZE for both buttons */
-    height: 55px;           /* Ensures identical height */
+    width: 240px;
+    height: 55px;
     transition: 0.2s ease;
 }
-
 
 .center-btn:hover {
     transform: translateY(-2px);
