@@ -557,6 +557,47 @@ function initbodyweightPage() {
     loadDefaultRange();
 }
 
+// qoute handler
+const quoteContainer = document.querySelector(".quote-container");
+
+function showNewQuote() {
+    const textEl = document.getElementById("quoteText");
+    const authorEl = document.getElementById("quoteAuthor");
+    if (!textEl || !authorEl) return;
+
+    const index = Math.floor(Math.random() * QUOTES.length);
+    const quote = QUOTES[index];
+
+    textEl.textContent = `“${quote.text}”`;
+    authorEl.textContent = `– ${quote.author}`;
+}
+
+// Function to update visibility based on content
+function updateQuoteVisibility() {
+    if (contentArea.innerHTML.trim() === "" || contentArea.style.display === "none") {
+        quoteContainer.style.display = "flex"; // show quote
+        showNewQuote();
+    } else {
+        quoteContainer.style.display = "none"; // hide quote
+    }
+}
+
+// Show quote initially
+document.addEventListener("DOMContentLoaded", updateQuoteVisibility);
+
+// Observe content-area changes
+const observer = new MutationObserver(updateQuoteVisibility);
+observer.observe(contentArea, { childList: true, subtree: true });
+
+// Update quote when background is clicked (only if visible)
+quoteContainer.addEventListener("click", () => {
+    if (quoteContainer.style.display !== "none") showNewQuote();
+});
+
+// Update quote visibility when clicking home button
+homeButton.addEventListener("click", updateQuoteVisibility);
+
+
 async function initWorkoutApp() {
 
     // -----------------------------

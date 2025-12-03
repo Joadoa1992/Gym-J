@@ -121,6 +121,7 @@ const QUOTES = [
     }
 ];
 
+
 function showNewQuote() {
     const textEl = document.getElementById("quoteText");
     const authorEl = document.getElementById("quoteAuthor");
@@ -135,4 +136,19 @@ function showNewQuote() {
 
 document.addEventListener("DOMContentLoaded", () => {
     showNewQuote();
+
+    // Make the quote clickable
+    const textEl = document.getElementById("quoteText");
+    if (textEl) {
+        textEl.style.cursor = "pointer"; // show pointer on hover
+        textEl.addEventListener("click", () => {
+            showNewQuote();
+        });
+    }
+
+    setInterval(() => {
+        if (quoteContainer.style.display !== "none") {
+            showNewQuote();
+        }
+    }, 60000);
 });

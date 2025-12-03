@@ -7,31 +7,37 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="/js/pr.js"></script>
     <script defer src="/js/theme.js"></script>
-    <script defer src="/js/quotes.js"></script>
 </head>
 <body>
 
 <div class="sidebar">
     <div class="sidebar-header" id="home-button">
-        <h2>Gym-J</h2>
+        <h2><img src="images/GymJNew.png"></h2>
     </div>
 
     <div class="sidebar-menu">
-        <a href="#" data-file="pr.html"><div class="nav-icon">🏋️</div>
-            PR</a>
-        <a href="#" data-file="nutrition.html"><div class="nav-icon">🍽️</div>
-            Nutrition</a>
-        <a href="#" data-file="bodyweight_graf.html"><div class="nav-icon">⚖️</div>
-            Weight tracker</a>
-        <a href="#" data-file="workout_menu.html"><div class="nav-icon">📋</div>
-            Træningsplaner</a>
-        <a href="#" data-file="test5.html"><div class="nav-icon">📐</div>
-            BMI</a>
-        <a href="#" data-file="test6.html">Test 6</a>
-        <a class="nav-button" href="#" onclick="showNewQuote(); return false;">
-            <div class="nav-icon">💬</div>
-            Nyt citat
+
+        <a href="#" data-file="pr.html">
+            <div class="nav-icon"><img src="images/weight-lifting.png" alt="PR"></div>
+            PR
         </a>
+        <a href="#" data-file="nutrition.html">
+            <div class="nav-icon"><img src="images/restaurant.png" alt="Nutrition"></div>
+            Nutrition
+        </a>
+        <a href="#" data-file="bodyweight_graf.html">
+            <div class="nav-icon"><img src="images/weighing.png" alt="Weight tracker"></div>
+            Weight tracker
+        </a>
+        <a href="#" data-file="workout_menu.html">
+            <div class="nav-icon"><img src="images/clipboard.png" alt="Træningsplaner"></div>
+            Træningsplaner
+        </a>
+        <a href="#" data-file="test5.html">
+            <div class="nav-icon"><img src="x.png" alt="BMI"></div>
+            BMI
+        </a>
+
     </div>
 
     <div class="sidebar-user">
@@ -40,12 +46,16 @@
     </div>
 </div>
 
-<div class="content" id="content-area" style="display:none;">
-
+<div class="quote-container">
+    <p id="quoteText" ></p>
+    <p id="quoteAuthor"></p>
 </div>
+
+<div class="content" id="content-area" style="display:none;"></div>
 
 <script src="js/nutrition.js"></script>
 <script src="js/pr.js"></script>
 <script src="js/frontpagejs.js"></script>
+<script src="js/quotes.js"></script>
 </body>
 </html>

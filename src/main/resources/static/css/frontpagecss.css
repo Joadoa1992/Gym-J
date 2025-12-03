@@ -57,9 +57,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     gap: 12px;
 }
 
+/* Sidebar menu links with drop-in animation */
 .sidebar-menu a {
     display: flex;
-    flex-direction: column; /* <<< ADD THIS */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 10px;
@@ -71,6 +72,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 14px;
     transition: all 0.18s ease-out;
     gap: 6px;
+
+    /* Animation */
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: drop-in 0.5s forwards;
+}
+
+/* Staggered animation delays for each menu item */
+.sidebar-menu a:nth-child(1) { animation-delay: 0.1s; }
+.sidebar-menu a:nth-child(2) { animation-delay: 0.2s; }
+.sidebar-menu a:nth-child(3) { animation-delay: 0.3s; }
+.sidebar-menu a:nth-child(4) { animation-delay: 0.4s; }
+.sidebar-menu a:nth-child(5) { animation-delay: 0.5s; }
+.sidebar-menu a:nth-child(6) { animation-delay: 0.6s; }
+
+/* Keyframes for drop-in animation */
+@keyframes drop-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .sidebar-menu a:hover {
@@ -145,4 +167,45 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         padding: 24px 16px;
         margin: 12px;
     }
+}
+
+.nav-icon img {
+    width: 1cm;
+    height: 1cm;
+    object-fit: contain; /* Keeps image proportions */
+}
+
+.sidebar-header img{
+    width: 5cm;
+    height: 2cm;
+    object-fit: contain; /* Keeps image proportions */
+
+}
+.quote-container {
+    position: absolute;
+    top: 50%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #4fc3f7;
+
+    font-size: 35px;
+    max-width: 600px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    cursor: pointer; /* show it’s clickable */
+    pointer-events: auto; /* allow clicks on the container */
+    font-style: italic;
+
+
+}
+
+
+.quote-container #quoteAuthor {
+    margin-top: 12px;
+    font-weight: bold;
+    color: #4fc3f7;
+    font-size: 1.1rem;
 }
