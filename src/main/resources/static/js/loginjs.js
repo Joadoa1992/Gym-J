@@ -8,9 +8,8 @@ if (createAccountForm) {
 
         const user = {
             firstName: document.getElementById("name").value,
-            lastName: document.getElementById("lastname").value,
             username: document.getElementById("username").value,
-            email: document.getElementById("email").value,
+
             password: document.getElementById("password").value
         };
 
