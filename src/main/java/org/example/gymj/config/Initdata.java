@@ -34,11 +34,19 @@ public class Initdata implements CommandLineRunner {
 
         User user = userRepository.findByUsername("John");
 
-        if (user == null) {
-            user = new User();
-            user.setUsername("John");
-            user.setPassword("john");
-            user = userRepository.save(user);
+        List<User> users = List.of(
+                new User("Admin","1234"),
+                new User("Güney","1234"),
+                new User("Mads","1234"),
+                new User("Joakim","1234"),
+                new User("Yosef","1234")
+
+        );
+
+        for(User u : users) {
+            if(!userRepository.existsByUsername(u.getUsername())) {
+                userRepository.save(u);
+            }
         }
 
         List<Bodyweight> entries = List.of(
