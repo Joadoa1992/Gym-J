@@ -13,4 +13,6 @@ public interface NutritionEntryRepository extends JpaRepository<NutritionEntry, 
 
     // Find alle entries sorteret efter dato (til graf)
     List<NutritionEntry> findAllByOrderByDateAsc();
+
+    boolean existsByDate(LocalDate date);
 }

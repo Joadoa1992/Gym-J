@@ -248,10 +248,9 @@ function initPrPage() {
 
     if (!prTableBody || !prForm || !prChartCanvas) return;
 
-    document.addEventListener("DOMContentLoaded", () => {
         loadLatestPrs();
         loadPrHistory();
-    });
+
 
     prForm.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -414,6 +413,7 @@ function initPrPage() {
         }
     }
 }
+
 function initbodyweightPage() {
     let weightChartInstance = null;
 
