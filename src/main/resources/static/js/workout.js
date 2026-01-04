@@ -135,13 +135,13 @@ if (document.getElementById("planTitle")) {
                     <img src="${ex.imageUrl || 'placeholder.png'}" alt="${ex.exerciseName}">
                     <h3>${ex.exerciseName}</h3>
                     <p>${ex.description || ''}</p>
-                </div>
+        
+        <div class="logCardContainer"></div> <!-- table will go here -->
 
-                <div class="logArea">
-                    <div class="setRows"></div>
-                    <button class="addSetBtn">Add Set</button>
-                    <button class="submitLogBtn">Log Workout</button>
-                    <div class="logCardContainer"></div>
+        <div class="setRows"></div>
+        <button class="addSetBtn">Add Set</button>
+        <button class="submitLogBtn">Log Workout</button>
+        
                 </div>
             `;
 
@@ -166,39 +166,80 @@ if (document.getElementById("planTitle")) {
             addSetBtn.onclick = addSet;
 
             submitBtn.onclick = async () => {
-                const weights = [...setRows.querySelectorAll(".weight")].map(i => +i.value);
-                const reps = [...setRows.querySelectorAll(".reps")].map(i => +i.value);
+                const weightInputs = [...setRows.querySelectorAll(".weight")];
+                const repInputs = [...setRows.querySelectorAll(".reps")];
 
-                const logEntries = weights.map((w, i) => ({
-                    weight: w,
-                    repsCompleted: reps[i],
-                    setsCompleted: 1,
-                    totalVolume: w * reps[i]
-                }));
+                const logEntries = [];
 
-                await fetch(`http://localhost:8080/api/logs/${ex.id}/batch`, {
+                for (let i = 0; i < weightInputs.length; i++) {
+                    const weight = Number(weightInputs[i].value);
+                    const reps = Number(repInputs[i].value);
+
+                    if (!Number.isFinite(weight) || weight <= 0 ||
+                        !Number.isFinite(reps) || reps <= 0) {
+                        alert("Please enter valid weight and reps for all sets");
+                        return;
+                    }
+
+                    logEntries.push({
+                        weight: weight,
+                        repsCompleted: reps,
+                        setsCompleted: 1,
+                        totalVolume: weight * reps
+                    });
+                }
+
+                // Send to backend and get created logs
+                const createdLogs = await fetch(`http://localhost:8080/api/logs/${ex.id}/batch`, {
                     method: "POST",
-                    headers: {"Content-Type": "application/json"},
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(logEntries)
-                });
+                }).then(res => res.json());
 
+                // Clear input fields
                 setRows.innerHTML = "";
                 addSet();
+
+
+                // Refresh full logs table if desired
                 loadLogs();
             };
 
+
             async function loadLogs() {
                 const logs = await fetchJSON(`http://localhost:8080/api/logs/${ex.id}`);
-                logContainer.innerHTML = logs.map(l => `
-                    <div class="logCard">
-                        <p><b>Date:</b> ${l.date}</p>
-                        <p>Weight: ${l.weight} kg</p>
-                        <p>Reps: ${l.repsCompleted}</p>
-                        <p>Volume: ${l.totalVolume}</p>
-                    </div>
-                `).join("");
-            }
+                const tableContainer = row.querySelector(".logCardContainer");
 
+
+                if (!logs || logs.length === 0) {
+                    logContainer.innerHTML = "<p>No logs yet.</p>";
+                    return;
+                }
+
+                logContainer.innerHTML = `
+        <table class="logTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Weight (kg)</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                    <th>Volume</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${logs.map(l => `
+                    <tr>
+                        <td>${l.date}</td>
+                        <td>${l.weight}</td>
+                        <td>${l.setsCompleted}</td>
+                        <td>${l.repsCompleted}</td>
+                        <td>${l.totalVolume}</td>
+                    </tr>
+                `).join("")}
+            </tbody>
+        </table>
+    `;}
             loadLogs();
             exerciseListDiv.appendChild(row);
         });

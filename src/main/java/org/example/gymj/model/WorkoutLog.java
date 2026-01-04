@@ -1,6 +1,7 @@
 package org.example.gymj.model;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.example.gymj.model.WorkoutExercise;
 
 import java.time.LocalDate;
 
@@ -9,23 +10,30 @@ public class WorkoutLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private LocalDate date;
-    private int weight;
-    private int setsCompleted;
-    private int repsCompleted;
-    private int totalVolume;
+    private Integer weight;
+    private Integer setsCompleted;
+    private Integer repsCompleted;
+    private Integer totalVolume;
 
     @ManyToOne
     @JoinColumn(name = "exercise_id")
+    @JsonIgnore
     private WorkoutExercise exercise;
 
+    public WorkoutLog() {}
 
-    public WorkoutLog() {
-    }
-
-    public WorkoutLog(int id, LocalDate date, int weight, int setsCompleted, int repsCompleted, int totalVolume, WorkoutExercise exercise) {
+    public WorkoutLog(
+            Integer id,
+            LocalDate date,
+            Integer weight,
+            Integer setsCompleted,
+            Integer repsCompleted,
+            Integer totalVolume,
+            WorkoutExercise exercise
+    ) {
         this.id = id;
         this.date = date;
         this.weight = weight;
@@ -35,11 +43,11 @@ public class WorkoutLog {
         this.exercise = exercise;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -51,35 +59,35 @@ public class WorkoutLog {
         this.date = date;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
-    public int getSetsCompleted() {
+    public Integer getSetsCompleted() {
         return setsCompleted;
     }
 
-    public void setSetsCompleted(int setsCompleted) {
+    public void setSetsCompleted(Integer setsCompleted) {
         this.setsCompleted = setsCompleted;
     }
 
-    public int getRepsCompleted() {
+    public Integer getRepsCompleted() {
         return repsCompleted;
     }
 
-    public void setRepsCompleted(int repsCompleted) {
+    public void setRepsCompleted(Integer repsCompleted) {
         this.repsCompleted = repsCompleted;
     }
 
-    public int getTotalVolume() {
+    public Integer getTotalVolume() {
         return totalVolume;
     }
 
-    public void setTotalVolume(int totalVolume) {
+    public void setTotalVolume(Integer totalVolume) {
         this.totalVolume = totalVolume;
     }
 
@@ -89,5 +97,10 @@ public class WorkoutLog {
 
     public void setExercise(WorkoutExercise exercise) {
         this.exercise = exercise;
+    }
+
+    @PrePersist
+    public void setDateAutomatically() {
+        this.date = LocalDate.now();
     }
 }

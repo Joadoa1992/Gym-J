@@ -42,6 +42,7 @@ public class WorkoutLogController {
 
     @GetMapping("/{exerciseId}")
     public List<WorkoutLog> getLogs(@PathVariable int exerciseId) {
-        return logRepo.findByExerciseId(exerciseId);
+        return logRepo.findByExerciseIdOrderByDateDesc(exerciseId);
     }
+
 }

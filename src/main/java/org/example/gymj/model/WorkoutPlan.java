@@ -23,7 +23,7 @@ public class WorkoutPlan {
             joinColumns = @JoinColumn(name = "plan_id"),
             inverseJoinColumns = @JoinColumn(name = "exercise_id")
     )
-    private Set<WorkoutExercise> exercises = new HashSet<>();
+    private List<WorkoutExercise> exercises = new ArrayList<>();
 
     public WorkoutPlan() {}
 
@@ -47,11 +47,11 @@ public class WorkoutPlan {
         this.planName = planName;
     }
 
-    public Set<WorkoutExercise> getExercises() {
+    public List<WorkoutExercise> getExercises() {
         return exercises;
     }
 
-    public void setExercises(Set<WorkoutExercise> exercises) {
+    public void setExercises(List<WorkoutExercise> exercises) {
         this.exercises = exercises;
     }
 

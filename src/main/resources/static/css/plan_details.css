@@ -41,10 +41,13 @@
 
 .exerciseCard img {
     width: 100%;
-    max-height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
+    height: 160px;
+    object-fit: contain; /* 👈 key change */
+    background: #0b0f14; /* subtle dark background */
+    padding: 4px;
+    border-radius: 10px;
 }
+
 
 .logArea {
     width: 300px;
@@ -84,10 +87,9 @@
 .submitLogBtn { background: #27ae60; color: white; }
 
 .logCardContainer {
-    max-height: 300px;
-    overflow-y: auto;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 10px;
+    margin-top: 12px;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 .logCard {
@@ -105,4 +107,27 @@
     .logArea {
         width: 100%;
     }
+}
+
+
+.logTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.logTable th, .logTable td {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.logTable th {
+    background: rgba(79,195,247,0.2);
+    font-weight: bold;
+}
+
+.logTable tbody tr:nth-child(even) {
+    background: rgba(255,255,255,0.05);
 }

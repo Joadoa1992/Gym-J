@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface WorkoutLogRepository extends JpaRepository<WorkoutLog, Integer> {
     List<WorkoutLog> findByExerciseId(int exerciseId);
-    
+
+    List<WorkoutLog> findByExerciseIdOrderByDateDesc(int exerciseId);
+
 }
